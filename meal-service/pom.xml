@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>siq</groupId>
-	<artifactId>meals-service</artifactId>
+	<artifactId>meal-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>meals-service</name>
 	<description>Meals service</description>
