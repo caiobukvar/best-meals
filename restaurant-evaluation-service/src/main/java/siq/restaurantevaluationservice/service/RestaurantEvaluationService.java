@@ -13,20 +13,22 @@ public class RestaurantEvaluationService {
 
     private final RestaurantEvaluationRepository evaluationRepository;
     private final RestTemplate restTemplate;
+    private final String restaurantServiceUrl;
 
-    @Value("${services.restaurant-service}")
-    private String restaurantServiceUrl;
-
-    public RestaurantEvaluationService(RestaurantEvaluationRepository evaluationRepository, RestTemplate restTemplate) {
+    public RestaurantEvaluationService(
+            RestaurantEvaluationRepository evaluationRepository,
+            RestTemplate restTemplate,
+            @Value("${services.restaurant-service}") String restaurantServiceUrl) {
         this.evaluationRepository = evaluationRepository;
         this.restTemplate = restTemplate;
+        this.restaurantServiceUrl = restaurantServiceUrl;
     }
 
     public RestaurantEvaluation createEvaluation(Long restaurantId, RestaurantEvaluation evaluation) {
-        String restaurantUrl = restaurantServiceUrl + "/restaurants/" + restaurantId;
+        String restaurantUrl = "http://restaurant-service/api/restaurants/" + restaurantId;
 
         try {
-            restTemplate.getForObject(restaurantUrl, String.class);
+            restTemplate.getForObject(restaurantUrl, String.class); // Apenas verifica se o restaurante existe
         } catch (Exception e) {
             throw new RuntimeException("Restaurante não encontrado no serviço de restaurantes", e);
         }
@@ -36,6 +38,14 @@ public class RestaurantEvaluationService {
     }
 
     public List<RestaurantEvaluation> getRestaurantEvaluations(Long restaurantId) {
+        String restaurantUrl = "http://restaurant-service/api/restaurants/" + restaurantId;
+
+        try {
+            restTemplate.getForObject(restaurantUrl, String.class); // Apenas verifica se o restaurante existe
+        } catch (Exception e) {
+            throw new RuntimeException("Restaurante não encontrado no serviço de restaurantes", e);
+        }
+
         return evaluationRepository.findByRestaurantId(restaurantId);
     }
 
