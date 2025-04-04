@@ -76,10 +76,10 @@ mvn spring-boot:run
 ## 📚 Documentação da API
 Cada serviço expõe sua documentação Swagger em:
 
-- `meal-service`: http://localhost:8081/swagger-ui.html
-- `meal-evaluation-service`: http://localhost:8082/swagger-ui.html
-- `restaurant-service`: http://localhost:8083/swagger-ui.html
-- `restaurant-evaluation-service`: http://localhost:8084/swagger-ui.html
+- `restaurant-service`: http://localhost:8081/swagger-ui.html
+- `restaurant-evaluation-service`: http://localhost:8082/swagger-ui.html
+- `meal-service`: http://localhost:8083/swagger-ui.html
+- `meal-evaluation-service`: http://localhost:8084/swagger-ui.html
 
 ## 🔁 Comunicação entre Serviços
 A comunicação entre os serviços é feita via HTTP utilizando RestTemplate, com base nos nomes registrados no Eureka.
