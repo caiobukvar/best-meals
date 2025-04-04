@@ -8,7 +8,7 @@ import siq.restaurantevaluationservice.service.RestaurantEvaluationService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurants")
+@RequestMapping("/api/restaurants")
 public class RestaurantEvaluationController {
 
     private final RestaurantEvaluationService evaluationService;

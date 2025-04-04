@@ -6,5 +6,6 @@ import siq.mealevaluationservice.model.MealEvaluation;
 import java.util.List;
 
 public interface MealEvaluationRepository extends JpaRepository<MealEvaluation, Long> {
-    List<MealEvaluation> findByMealId(Long mealId);
+    List<MealEvaluation> findByMealIdAndRestaurantId(Long mealId, Long restaurantId);
+
 }

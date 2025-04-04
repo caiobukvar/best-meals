@@ -20,6 +20,8 @@ public class MealEvaluation {
 
     private String comment;
 
+    private Long restaurantId;
+
     // Getters e Setters
     public Long getId() {
         return id;
@@ -52,4 +54,6 @@ public class MealEvaluation {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public void setRestaurantId(Long restaurantId) { this.restaurantId = restaurantId; }
 }

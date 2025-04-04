@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="bestmeals@localhost" uuid="1ad74671-5e19-46c4-9de3-a6ce8b1a3eb0">
+    <data-source source="LOCAL" name="bestmeals@localhost" uuid="80ef6e0f-27c2-48f1-b875-a3ae52d50359">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/meal-service/src/main/resources/application.properties</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/bestmeals</jdbc-url>
       <jdbc-additional-properties>

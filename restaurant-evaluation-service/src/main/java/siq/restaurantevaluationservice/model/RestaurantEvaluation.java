@@ -3,7 +3,7 @@ package siq.restaurantevaluationservice.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "restaurant_evaluations")
+@Table(name = "restaurant_evaluation")
 public class RestaurantEvaluation {
 
     @Id

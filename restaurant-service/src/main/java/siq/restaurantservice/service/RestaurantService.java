@@ -39,7 +39,7 @@ public class RestaurantService {
     }
 
     public Object getRestaurantEvaluations(Long restaurantId) {
-        String evaluationsUrl = restaurantEvaluationServiceUrl + "/restaurants/" + restaurantId + "/evaluations";
+        String evaluationsUrl = restaurantEvaluationServiceUrl + "/restaurant/" + restaurantId + "/evaluations";
         return restTemplate.getForObject(evaluationsUrl, Object.class);
     }
 }
