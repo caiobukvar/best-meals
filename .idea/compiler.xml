@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-gateway" />
         <module name="meal-evaluation-service" />
+        <module name="meal-service" />
+        <module name="restaurant-evaluation-service" />
+        <module name="restaurant-service" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="meal-evaluation-service" options="" />
-    </option>
   </component>
 </project>
