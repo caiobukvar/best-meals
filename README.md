@@ -45,3 +45,58 @@ A arquitetura do projeto segue o modelo de **microserviços**, com os seguintes 
 ```bash
 git clone https://github.com/caiobukvar/best-meals.git
 cd best-meals
+```
+
+### 2. Configure o banco de dados
+Atualize os arquivos application.properties (ou application.yml) de cada serviço com os dados de conexão do seu banco:
+
+```bash
+spring.datasource.url=jdbc:postgresql://localhost:5432/best_meals
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+```
+
+### 3. Inicie os serviços
+A ordem sugerida de inicialização é:
+
+1.`eureka-server`
+2.`restaurant-service`
+3.`restaurant-evaluation-service`
+4.`meal-service`
+5.`meal-evaluation-service`
+6.`api-gateway`
+
+Você pode rodar cada serviço com o comando:
+
+```bash
+cd nome-do-servico
+mvn spring-boot:run
+```
+
+## 📚 Documentação da API
+Cada serviço expõe sua documentação Swagger em:
+
+`meal-service`: http://localhost:8081/swagger-ui.html
+`meal-evaluation-service`: http://localhost:8082/swagger-ui.html
+`restaurant-service`: http://localhost:8083/swagger-ui.html
+`restaurant-evaluation-service`: http://localhost:8084/swagger-ui.html
+
+## 🔁 Comunicação entre Serviços
+A comunicação entre os serviços é feita via HTTP utilizando RestTemplate, com base nos nomes registrados no Eureka.
+
+## 📦 Estrutura dos Diretórios
+
+```pgsql
+best-meals/
+│
+├── api-gateway/
+├── eureka-server/
+├── meal-service/
+├── meal-evaluation-service/
+├── restaurant-service/
+├── restaurant-evaluation-service/
+└── pom.xml
+```
+
+## ✍️ Autor
+Desenvolvido por Caio Bukvar
