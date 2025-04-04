@@ -8,5 +8,5 @@ import siq.mealservice.dto.RestaurantResponse;
 @FeignClient(name = "restaurant-service")
 public interface RestaurantClient {
     @GetMapping("/restaurants/{id}")
-    RestaurantResponse getRestaurantById(@PathVariable Long id);
+    RestaurantResponse getRestaurantById(@PathVariable("id") Long id);
 }

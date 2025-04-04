@@ -20,8 +20,13 @@ public class MealController {
 
     @PostMapping
     public ResponseEntity<Meal> createMeal(@RequestBody Meal meal) {
-        Restaurant restaurant = meal.getRestaurant(); // Pegamos o restaurante da refeição
-        return ResponseEntity.ok(mealService.createMeal(meal, restaurant));
+        Restaurant restaurant = meal.getRestaurant();
+
+        if (restaurant == null || restaurant.getId() == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(mealService.createMeal(meal, restaurant.getId()));
     }
 
     @GetMapping("/{mealId}")

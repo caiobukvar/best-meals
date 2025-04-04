@@ -1,4 +1,4 @@
-package siq.restaurantevaluationservice.config;
+package siq.restaurantservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

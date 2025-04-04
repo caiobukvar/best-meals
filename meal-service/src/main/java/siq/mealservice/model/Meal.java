@@ -26,6 +26,7 @@ public class Meal {
     @NotBlank
     private String ingredients;
 
+    @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;

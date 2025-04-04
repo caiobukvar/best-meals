@@ -1,0 +1,5 @@
+siq\mealevaluationservice\controller\MealEvaluationController.class
+siq\mealevaluationservice\MealEvaluationServiceApplication.class
+siq\mealevaluationservice\service\MealEvaluationService.class
+siq\mealevaluationservice\model\MealEvaluation.class
+siq\mealevaluationservice\repository\MealEvaluationRepository.class

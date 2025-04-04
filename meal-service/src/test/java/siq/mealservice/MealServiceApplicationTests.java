@@ -1,4 +1,4 @@
-package siq.meal_service;
+package siq.mealservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
