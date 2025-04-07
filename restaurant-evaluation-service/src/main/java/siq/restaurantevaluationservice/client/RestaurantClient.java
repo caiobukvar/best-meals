@@ -16,7 +16,10 @@ public class RestaurantClient {
     }
 
     public RestaurantResponse getRestaurantById(Long restaurantId) {
+        // api/restaurants???
         String url = "http://restaurant-service/restaurants/" + restaurantId;
         return restTemplate.getForObject(url, RestaurantResponse.class);
     }
 }
+
+// TALVEZ SEM USO

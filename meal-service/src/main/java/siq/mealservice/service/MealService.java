@@ -1,11 +1,11 @@
 package siq.mealservice.service;
 
+import org.springframework.stereotype.Service;
 import siq.mealservice.client.RestaurantClient;
-import siq.mealservice.model.Restaurant;
 import siq.mealservice.dto.RestaurantResponse;
+import siq.mealservice.exception.RestaurantNotFoundException;
 import siq.mealservice.model.Meal;
 import siq.mealservice.repository.MealRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -21,14 +21,20 @@ public class MealService {
     }
 
     public Meal createMeal(Meal meal, Long restaurantId) {
+        System.out.println("Buscando restaurante com ID: " + restaurantId);
         RestaurantResponse restaurantResponse = restaurantClient.getRestaurantById(restaurantId);
 
+        // Add this debug print
+        System.out.println("Restaurant response: " + restaurantResponse);
+
         if (restaurantResponse == null) {
-            throw new RuntimeException("Restaurante não encontrado");
+            throw new RestaurantNotFoundException("Restaurante com ID " + restaurantId + " não encontrado.");
         }
 
-        Restaurant restaurant = new Restaurant(restaurantResponse.getId());
-        meal.assignRestaurant(restaurant);
+        // Add this debug print
+        System.out.println("Restaurant ID from response: " + restaurantResponse.getId());
+
+        meal.setRestaurantId(restaurantId);
 
         return mealRepository.save(meal);
     }

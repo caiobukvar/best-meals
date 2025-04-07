@@ -13,7 +13,6 @@ public class Meal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @Schema para adicionar ex no swagger
     @Schema(example = "Coxinha")
     @NotBlank
     private String name;
@@ -26,30 +25,25 @@ public class Meal {
     @NotBlank
     private String ingredients;
 
-    @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "restaurant_id", nullable = false)
-    private Restaurant restaurant;
-
-    public void assignRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
+    @Column(name = "restaurant_id", nullable = false)
+    private Long restaurantId;
 
     public Meal() {}
 
-    public Meal(String name, Restaurant restaurant, double cost, String ingredients) {
+    public Meal(String name, Long restaurantId, double cost, String ingredients) {
         this.name = name;
-        this.restaurant = restaurant;
+        this.restaurantId = restaurantId;
         this.cost = cost;
         this.ingredients = ingredients;
     }
 
-    public Long getId() {
-        return id;
+    public void assignRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -58,10 +52,6 @@ public class Meal {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Restaurant  getRestaurant() {
-        return restaurant;
     }
 
     public double getCost() {
@@ -78,5 +68,13 @@ public class Meal {
 
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }
