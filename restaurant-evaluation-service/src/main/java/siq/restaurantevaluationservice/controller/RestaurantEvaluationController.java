@@ -111,4 +111,35 @@ public class RestaurantEvaluationController {
         evaluationService.deleteEvaluation(evaluationId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{restaurantId}/evaluations/average")
+    @Operation(
+            summary = "Get average rating of a restaurant",
+            description = "Calculates the average rating for a specific restaurant",
+            parameters = {
+                    @Parameter(
+                            name = "restaurantId",
+                            description = "ID of the restaurant",
+                            required = true,
+                            example = "1",
+                            in = ParameterIn.PATH,
+                            schema = @Schema(type = "integer", format = "int64")
+                    )
+            }
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Average rating calculated"),
+            @ApiResponse(responseCode = "404", description = "Restaurant not found or no evaluations")
+    })
+    public ResponseEntity<?> getRestaurantAverageRating(
+            @PathVariable("restaurantId") @Valid Long restaurantId) {
+        Double averageRating = evaluationService.getRestaurantAverageRating(restaurantId);
+
+        if (averageRating == null) {
+            return ResponseEntity.status(404).body("Ainda não existem avaliações para este restaurante");
+        }
+
+        return ResponseEntity.ok(averageRating);
+    }
+
 }

@@ -24,15 +24,9 @@ public class MealService {
         System.out.println("Buscando restaurante com ID: " + restaurantId);
         RestaurantResponse restaurantResponse = restaurantClient.getRestaurantById(restaurantId);
 
-        // Add this debug print
-        System.out.println("Restaurant response: " + restaurantResponse);
-
         if (restaurantResponse == null) {
             throw new RestaurantNotFoundException("Restaurante com ID " + restaurantId + " não encontrado.");
         }
-
-        // Add this debug print
-        System.out.println("Restaurant ID from response: " + restaurantResponse.getId());
 
         meal.setRestaurantId(restaurantId);
 

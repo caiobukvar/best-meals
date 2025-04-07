@@ -1,6 +1,8 @@
 package siq.restaurantevaluationservice.service;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import siq.restaurantevaluationservice.model.RestaurantEvaluation;
@@ -13,7 +15,6 @@ public class RestaurantEvaluationService {
 
     private final RestaurantEvaluationRepository evaluationRepository;
     private final RestTemplate restTemplate;
-    private final String restaurantServiceUrl;
 
     public RestaurantEvaluationService(
             RestaurantEvaluationRepository evaluationRepository,
@@ -21,7 +22,6 @@ public class RestaurantEvaluationService {
             @Value("${services.restaurant-service}") String restaurantServiceUrl) {
         this.evaluationRepository = evaluationRepository;
         this.restTemplate = restTemplate;
-        this.restaurantServiceUrl = restaurantServiceUrl;
     }
 
     public RestaurantEvaluation createEvaluation(Long restaurantId, RestaurantEvaluation evaluation) {
@@ -41,7 +41,7 @@ public class RestaurantEvaluationService {
         String restaurantUrl = "http://restaurant-service/api/restaurants/" + restaurantId;
 
         try {
-            restTemplate.getForObject(restaurantUrl, String.class); // Apenas verifica se o restaurante existe
+            restTemplate.getForObject(restaurantUrl, String.class);
         } catch (Exception e) {
             throw new RuntimeException("Restaurante não encontrado no serviço de restaurantes", e);
         }
@@ -51,5 +51,28 @@ public class RestaurantEvaluationService {
 
     public void deleteEvaluation(Long evaluationId) {
         evaluationRepository.deleteById(evaluationId);
+    }
+
+    public Double getRestaurantAverageRating(Long restaurantId) {
+        String restaurantUrl = "http://restaurant-service/api/restaurants/" + restaurantId;
+
+        try {
+            restTemplate.getForObject(restaurantUrl, String.class);
+        } catch (Exception e) {
+            throw new RuntimeException("Restaurante não encontrado no serviço de restaurantes", e);
+        }
+
+        List<RestaurantEvaluation> evaluations = evaluationRepository.findByRestaurantId(restaurantId);
+
+        if (evaluations.isEmpty()) {
+            return null;
+        }
+
+        double average = evaluations.stream()
+                .mapToDouble(RestaurantEvaluation::getRating)
+                .average()
+                .orElse(0.0);
+
+        return average;
     }
 }

@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface MealEvaluationRepository extends JpaRepository<MealEvaluation, Long> {
     List<MealEvaluation> findByMealIdAndRestaurantId(Long mealId, Long restaurantId);
-
 }

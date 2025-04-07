@@ -41,17 +41,4 @@ public class RestaurantService {
     public void deleteRestaurant(Long restaurantId) {
         restaurantRepository.deleteById(restaurantId);
     }
-
-    public List<Evaluation> getRestaurantEvaluations(Long restaurantId) {
-        // URL para acessar o serviço de avaliações
-        String evaluationsUrl = restaurantEvaluationServiceUrl + "/restaurant/" + restaurantId + "/evaluations";
-
-        // Realiza a requisição para pegar as avaliações e deserializa a resposta para uma lista de Evaluation
-        return restTemplate.exchange(
-                evaluationsUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Evaluation>>() {}
-        ).getBody();
-    }
 }

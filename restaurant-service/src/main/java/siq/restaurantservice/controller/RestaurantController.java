@@ -97,30 +97,4 @@ public class RestaurantController {
         restaurantService.deleteRestaurant(restaurantId);
         return ResponseEntity.noContent().build();
     }
-
-    @GetMapping("/{restaurantId}/evaluations")
-    @Operation(
-            summary = "Get restaurant evaluations",
-            description = "Returns all evaluations for a specific restaurant",
-            parameters = {
-                    @Parameter(
-                            name = "restaurantId",
-                            description = "ID of the restaurant",
-                            required = true,
-                            example = "1",
-                            in = ParameterIn.PATH,
-                            schema = @Schema(type = "integer", format = "int64")
-                    )
-            }
-    )
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Evaluations found",
-                    content = @Content(schema = @Schema(implementation = Evaluation.class))),
-            @ApiResponse(responseCode = "404", description = "Restaurant not found")
-    })
-    public ResponseEntity<List<Evaluation>> getRestaurantEvaluations(
-            @PathVariable @Valid Long restaurantId) {
-        List<Evaluation> evaluations = restaurantService.getRestaurantEvaluations(restaurantId);
-        return ResponseEntity.ok(evaluations);
-    }
 }

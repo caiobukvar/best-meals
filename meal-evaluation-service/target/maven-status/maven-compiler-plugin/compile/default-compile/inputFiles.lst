@@ -1,4 +1,7 @@
+C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\config\SwaggerConfig.java
 C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\controller\MealEvaluationController.java
+C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\exception\GlobalExceptionHandler.java
+C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\exception\ResourceNotFoundException.java
 C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\MealEvaluationServiceApplication.java
 C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\model\MealEvaluation.java
 C:\repo\testes\best-meals\meal-evaluation-service\src\main\java\siq\mealevaluationservice\repository\MealEvaluationRepository.java

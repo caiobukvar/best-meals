@@ -31,7 +31,6 @@ public class Restaurant {
     @Schema(description = "ZIP code of the restaurant", example = "12345")
     private String zipCode;
 
-    // Constructor and getters/setters remain the same
     public Restaurant() {}
 
     public Restaurant(Long id, String name, String address, String state, String zipCode) {
