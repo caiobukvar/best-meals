@@ -1,7 +1,6 @@
 # 🍽️ Best Meals
 
-**Best Meals** é uma aplicação baseada em microserviços que permite o cadastro, avaliação e listagem dos melhores pratos de restaurantes de uma cidade.  
-Cada parte da aplicação é desacoplada e comunicada via HTTP, utilizando Eureka para descoberta de serviços e Spring Cloud Gateway para roteamento.
+**Best Meals** é uma aplicação construída com arquitetura de microsserviços para avaliação de restaurantes e refeições. O projeto está dividido em múltiplos serviços independentes, escritos em Java com Spring Boot.
 
 ---
 
@@ -20,16 +19,14 @@ A arquitetura do projeto segue o modelo de **microserviços**, com os seguintes 
 
 ## 🛠️ Tecnologias Utilizadas
 
-- Java 17
-- Spring Boot 3.2+
+- Java 17+
+- Spring Boot 3.4.4
 - Spring Web
 - Spring Data JPA
-- Spring Cloud Netflix Eureka
 - Spring Cloud Gateway
+- Spring Eureka (Service Discovery)
 - PostgreSQL
-- Swagger/OpenAPI 3
-- Docker (em breve)
-- Maven
+- OpenAPI / Swagger (para documentação de API)
 
 ---
 
@@ -57,6 +54,7 @@ spring.datasource.password=sua_senha
 ```
 
 ### 3. Inicie os serviços
+
 A ordem sugerida de inicialização é:
 
 1.  `eureka-server`
